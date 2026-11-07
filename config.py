@@ -11,13 +11,12 @@
 # O robô lê a página pública t.me/s/<canal>, então não precisa entrar neles.
 # Rode `python bot.py --checar-fontes` para ver quais estão respondendo.
 CANAIS_TELEGRAM_HARDWARE = [
-    "ofertaskabum",      # canal oficial do KaBuM!
-    "pelando",           # (verificar) Pelando
-    "promobit",          # (verificar) Promobit
-    "achadosdotb",       # (verificar) Achados do Tecnoblog
-    "terabyteshop",      # (verificar) TerabyteShop
-    "pichauarena",       # (verificar) Pichau
-    # adicione aqui outros canais de promoção que você conhece
+    "ofertaskabum",
+    "promobit",
+    "achadosdotb",
+    "pichauofertas",
+    "pelandobr",
+    "terabyteshopoficial",
 ]
 
 CANAIS_TELEGRAM_MILHAS = [
