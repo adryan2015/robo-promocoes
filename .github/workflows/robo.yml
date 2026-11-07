@@ -1,0 +1,33 @@
+name: Robo de Promocoes
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: robo-promocoes
+  cancel-in-progress: false
+
+jobs:
+  rodar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Procurar promoções
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 bot.py
+
+      - name: Salvar memória do robô
+        run: |
+          git config user.name "robo-promocoes"
+          git config user.email "robo-promocoes@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet || (git commit -m "estado do robô" && git pull --rebase && git push)
